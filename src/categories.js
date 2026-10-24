@@ -1,6 +1,5 @@
 // The server stores categories under upper-case keys (e.g. "FICTION").
-// Turn a URL slug into that key, using the visitor's language so the
-// formatting matches the rest of the localised UI.
+// Turn a URL slug into that ASCII key regardless of the visitor's locale.
 export function categoryKey(slug) {
-  return slug.toLocaleUpperCase(navigator.language);
+  return slug.toUpperCase();
 }
