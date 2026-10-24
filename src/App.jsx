@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import { fetchBooks, fetchCategories } from "./api.js";
 import { categoryKey } from "./categories.js";
+import { formatPrice } from "./format.js";
+import Reserve from "./Reserve.jsx";
 
 function useHashRoute() {
   const [hash, setHash] = useState(window.location.hash || "#/");
@@ -51,8 +53,9 @@ function CategoryPage({ slug, onAdd }) {
           <article key={b.id} className="card" data-testid="book-card">
             <h2>{b.title}</h2>
             <p>{b.author}</p>
-            <p className="price">£{b.price.toFixed(2)}</p>
-            <button onClick={() => onAdd(b)}>Add to cart</button>
+            <p className="price">{formatPrice(b.price)}</p>
+            <button onClick={() => onAdd(b)}>Add to cart</button>{" "}
+            <a href={`#/reserve/${b.id}`} data-testid="reserve-link">Reserve for pickup</a>
           </article>
         ))}
       </div>
@@ -64,6 +67,7 @@ export default function App() {
   const hash = useHashRoute();
   const [cart, setCart] = useState([]);
   const match = hash.match(/^#\/category\/(.+)$/);
+  const reserve = hash.match(/^#\/reserve\/(\d+)$/);
 
   return (
     <>
@@ -72,7 +76,9 @@ export default function App() {
         <span data-testid="cart-count">Cart ({cart.length})</span>
       </header>
       <main>
-        {match ? (
+        {reserve ? (
+          <Reserve bookId={reserve[1]} />
+        ) : match ? (
           <CategoryPage slug={decodeURIComponent(match[1])} onAdd={(b) => setCart((c) => [...c, b])} />
         ) : (
           <Home />
