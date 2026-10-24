@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
-import { fetchBooks, fetchCategories } from "./api.js";
+import { fetchAllBooks, fetchBooks, fetchCategories } from "./api.js";
 import { categoryKey } from "./categories.js";
 import { formatPrice } from "./format.js";
+import { searchBooks } from "./search.js";
 import Reserve from "./Reserve.jsx";
 
 function useHashRoute() {
@@ -14,6 +15,36 @@ function useHashRoute() {
   return hash;
 }
 
+function Search() {
+  const [books, setBooks] = useState([]);
+  const [query, setQuery] = useState("");
+  useEffect(() => {
+    fetchAllBooks().then(setBooks);
+  }, []);
+  const results = searchBooks(books, query);
+  return (
+    <section>
+      <input
+        type="search"
+        value={query}
+        onChange={(e) => setQuery(e.target.value)}
+        placeholder="Search by title or author"
+        data-testid="search-input"
+        aria-label="Search books"
+      />
+      {query.trim() && results.length === 0 && <p data-testid="search-empty">No books match “{query}”.</p>}
+      <ul className="results">
+        {results.map((b) => (
+          <li key={b.id} data-testid="search-result">
+            {b.title} <span className="muted">by {b.author}</span>{" "}
+            <a href={`#/reserve/${b.id}`}>Reserve for pickup</a>
+          </li>
+        ))}
+      </ul>
+    </section>
+  );
+}
+
 function Home() {
   const [categories, setCategories] = useState([]);
   useEffect(() => {
@@ -21,6 +52,7 @@ function Home() {
   }, []);
   return (
     <section>
+      <Search />
       <h1>Browse by category</h1>
       <ul className="categories">
         {categories.map((c) => (

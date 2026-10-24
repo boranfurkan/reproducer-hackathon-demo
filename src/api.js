@@ -21,3 +21,8 @@ export async function createReservation(bookId, pickupDate) {
   });
   return res.json();
 }
+
+export async function fetchAllBooks() {
+  const res = await fetch("/api/books");
+  return res.json();
+}
