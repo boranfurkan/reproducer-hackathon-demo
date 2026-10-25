@@ -1,0 +1,10 @@
+table.orders { width: 100%; border-collapse: collapse; }
+table.orders th, table.orders td { text-align: left; padding: 10px 8px; border-bottom: 1px solid var(--line); }
+
+.drawer-root { position: fixed; inset: 0; z-index: 10; }
+.backdrop { position: absolute; inset: 0; background: rgba(20, 22, 30, 0.45); opacity: 1; transition: opacity 0.25s ease; }
+.drawer { position: absolute; top: 0; right: 0; bottom: 0; width: min(420px, 92vw); background: var(--card); padding: 24px; box-shadow: -8px 0 24px rgba(0, 0, 0, 0.2); transform: translateX(0); transition: transform 0.25s ease; }
+.drawer-root.entering .drawer { transform: translateX(100%); }
+.drawer-root.entering .backdrop { opacity: 0; }
+.drawer-root.closing .drawer { transform: translateX(100%); }
+.drawer-root.closing .backdrop { opacity: 0; }
