@@ -13,7 +13,7 @@ export const ORDERS = [
   { id: "PF-1063", placedAt: "2026-10-21", status: "Processing", total: 2625, items: [{ title: "Ink and Ember", qty: 1 }, { title: "The Quiet Orchard", qty: 1 }] },
 ];
 
-// The Midnight Reading Marathon runs on the night the clocks go back in the UK: six one-hour sessions,
+// The Midnight Reading Marathon: six one-hour sessions through the night of 24 to 25 October,
 // each stored as an exact instant (UTC). Capacity is per session.
 export const EVENT = {
   id: "midnight-marathon",
