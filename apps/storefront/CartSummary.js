@@ -8,7 +8,7 @@ export function CartSummary({ items, onOpen }) {
   const total = items.reduce((sum, i) => sum + i.qty * i.price, 0);
   return html`
     <div className="cart-summary" data-testid="cart-summary">
-      ${count > 0 ? `${count} ${count === 1 ? "book" : "books"} · ${money(total)}` : null}
+      ${count > 0 ? html`<span>${`${count} ${count === 1 ? "book" : "books"} · ${money(total)}`}</span>` : null}
       <button data-testid="open-basket" onClick=${onOpen}>Basket</button>
     </div>
   `;
