@@ -1,8 +1,4 @@
-node_modules/
-dist/
+node_modules
+test-results
+playwright-report
 .env
-.env.*
-!.env.example
-test-results/
-playwright-report/
-.DS_Store

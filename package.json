@@ -1,23 +1,18 @@
 {
-  "name": "bookshop-demo",
-  "version": "1.0.0",
+  "name": "pagefold-books",
+  "version": "2.0.0",
   "private": true,
   "type": "module",
-  "description": "Small bookshop used as a target app for ReProducer.",
+  "description": "Pagefold Books: the storefront, account area, checkout, events and reader apps of a small online bookshop. No build step; framework files are vendored at pinned versions.",
   "scripts": {
-    "dev": "vite",
-    "build": "vite build",
+    "build": "echo \"No build step: the apps are served as they are.\"",
     "start": "node server/index.js",
     "test": "playwright test"
   },
   "devDependencies": {
-    "@playwright/test": "^1.64.1",
-    "@vitejs/plugin-react": "^6.1.2",
-    "vite": "^8.3.5"
+    "@playwright/test": "^1.64.1"
   },
   "dependencies": {
-    "express": "^5.3.0",
-    "react": "^19.3.1",
-    "react-dom": "^19.3.1"
+    "express": "^5.3.0"
   }
 }

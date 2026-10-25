@@ -1,12 +1,14 @@
 import { defineConfig } from "@playwright/test";
 
+const port = process.env.PORT || 3000;
+
 export default defineConfig({
   testDir: "./tests",
-  use: { baseURL: "http://localhost:3000" },
+  use: { baseURL: `http://localhost:${port}`, timezoneId: "UTC", locale: "en-GB" },
   webServer: {
-    command: "npm run build && npm start",
-    url: "http://localhost:3000/api/categories",
+    command: "npm start",
+    url: `http://localhost:${port}/api/books`,
     reuseExistingServer: true,
-    timeout: 120_000,
+    timeout: 60_000,
   },
 });
