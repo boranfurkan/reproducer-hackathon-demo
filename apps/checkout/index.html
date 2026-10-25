@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Checkout · Pagefold Books</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="/shared/theme.css">
+  <link rel="stylesheet" href="./styles.css">
+  <script src="/static/js/analytics.js" defer></script>
+</head>
+<body>
+  <header class="site"><h1><a href="/">Pagefold Books</a></h1><span class="muted">Secure checkout</span></header>
+  <main>
+    <h2>Checkout</h2>
+    <ul id="summary" class="summary"></ul>
+    <form id="checkout" novalidate>
+      <label for="email">Email for your receipt</label>
+      <input id="email" name="email" type="email" autocomplete="email" data-testid="email">
+      <p id="message" class="error" role="alert" data-testid="message"></p>
+      <button class="primary" id="pay" type="submit" data-testid="pay">Pay now</button>
+    </form>
+    <section id="confirmation" hidden data-testid="confirmation">
+      <h2>Order confirmed</h2>
+      <p>Thank you. Your order number is <strong id="order-id"></strong>.</p>
+    </section>
+  </main>
+  <script type="module" src="./main.js"></script>
+</body>
+</html>
