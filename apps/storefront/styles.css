@@ -1,0 +1,5 @@
+.cart-summary { display: flex; align-items: center; gap: 12px; font-size: 15px; }
+.basket { margin-top: 24px; }
+.basket ul { list-style: none; margin: 0; padding: 0; }
+.basket li { display: flex; justify-content: space-between; align-items: center; padding: 8px 0; border-bottom: 1px solid var(--line); }
+.price { font-variant-numeric: tabular-nums; }
