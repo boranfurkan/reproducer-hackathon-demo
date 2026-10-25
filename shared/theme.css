@@ -23,3 +23,12 @@ input, select { font: inherit; padding: 8px 10px; border: 1px solid var(--line);
 label { display: block; margin: 12px 0 4px; }
 .error { color: #a21c1c; }
 .ok { color: #1c6b3a; }
+
+/* Accessibility: people who ask their system for less motion should not get animations or transitions. */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
+}
