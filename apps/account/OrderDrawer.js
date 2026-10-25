@@ -1,17 +1,12 @@
-const { nextTick, onBeforeUnmount, onMounted, ref } = Vue;
+const { onBeforeUnmount, onMounted, ref } = Vue;
 
-// Slides in from the right. Closing plays the slide-out first and only then removes the drawer from the page.
+// Opens at once. Closing fades the drawer out first and only then removes it from the page.
 export const OrderDrawer = {
   props: ["order"],
   emits: ["closed"],
   setup(props, { emit }) {
-    const state = ref("entering");
+    const state = ref("open");
     const panel = ref(null);
-
-    onMounted(async () => {
-      await nextTick();
-      requestAnimationFrame(() => (state.value = "open"));
-    });
 
     function finish() {
       emit("closed");
